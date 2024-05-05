@@ -1,0 +1,49 @@
+body {
+    background-color:rgb(41, 39, 39);
+  }
+
+  .card {
+    margin-top: 5rem;
+    background-color: rgb(37, 32, 32);
+    border-radius: 10px;
+  }
+  .card::before {
+    content: "";
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.2) 100%);
+    border-radius: 15px; 
+    z-index: -1;
+  }
+  
+  .card-title {
+    border-bottom: 1px solid var(--light-dark-grey);
+  }
+  
+  .form-check-label {
+    font-size: 1.2rem;
+    color: var(--light-dark-grey);
+  }
+  
+  .form-check-input:checked + .form-check-label {
+    color: var(--dark-green);
+  }
+  
+  .form-label {
+    color: var(--light-dark-grey);
+  }
+  
+  .form-control {
+    background-color: transparent;
+    border-color: grey;
+    color: white;
+  }
+  
+  .form-control:focus {
+    background-color: transparent;
+    border-color: grey; 
+    color: white;
+  }
