@@ -1,0 +1,131 @@
+###user registration
+post http://localhost:3000/user-api/user
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"harini",
+    "password":"harini",
+    "email":"harini@mail.com"
+}
+
+###user login req
+post http://localhost:3000/user-api/login
+Content-Type: application/json
+
+{
+    "userType":"user",
+    "username":"harini",
+    "password":"harini"
+    
+}
+
+###author registration
+post http://localhost:3000/columnist-api/user
+Content-Type: application/json
+
+{
+    "userType":"writer",
+    "username":"nandhini",
+    "password":"nandhini",
+    "email":"nandi@mail.com"
+}
+
+###author login
+post http://localhost:3000/columnist-api/login
+Content-Type: application/json
+
+{
+    "userType":"writer",
+    "username":"nandhini",
+    "password":"nandhini"
+   
+}
+
+### add new article
+ post http://localhost:3000/columnist-api/new-article
+ Content-Type: application/json
+
+{
+   "articleId":"{{$timestamp}}",
+   "title":"Digital Publishing",
+   "category":"Media and Entertainment",
+   "content":"Digital publishing has revolutionized the landscape of the publishing industry. It offers a multitude of benefits, such as increased accessibility, cost-effectiveness, and global reach. With the rise of e-books, online magazines, and digital newspapers, readers can conveniently access a vast array of content on their devices anytime, anywhere. Moreover, digital publishing allows for interactive features, multimedia integration, and personalized reading experiences. It has undoubtedly transformed the way we consume and engage with written material. ",
+   "dateOfCreation":"{{$datetime iso8601}}",
+   "dateOfModification":"{{$datetime iso8601}}",
+   "username":"nandhini",
+   "comments": [ ],
+   "status":true
+   
+}
+
+
+### read articles by columnist's username
+ get http://localhost:3000/columnist-api/articles/harini
+
+### edit column
+put http://localhost:6000/columnist-api/article
+Content-Type: application/json
+
+ {
+    "articleId":"1714744038",
+   "title":"Digital Publishing",
+   "category":"Media and Entertainment",
+   "content":"Digital publishing has revolutionized the landscape of the publishing industry. ",
+   "dateOfCreation":"2024-05-03T13:47:18.084Z",
+   "dateOfModification":"{{$datetime iso8601}}",
+   "username":"nandhini",
+    "comments": [ ],
+    "status":true
+   
+ }
+
+
+### soft delete(update) of an article by id
+put http://localhost:3000/columnist-api/article/1714744038
+Content-Type: application/json
+
+ {
+    "articleId":"1714744038",
+   "title":"Digital Publishing",
+   "category":"Media and Entertainment",
+   "content":" Digital publishing has revolutionized the landscape of the publishing industry. ",
+   "dateOfCreation":"2024-05-03T13:47:18.084Z",
+   "dateOfModification":"2024-05-03T13:47:18.084Z",
+   "username":"nandhini",
+    "comments": [ ],
+    "status":false
+   
+ }
+
+
+### read articles of ALL authors by a user
+get  http://localhost:3000/user-api/columns
+
+
+### write comment by user
+post http://localhost:3000/user-api/comment/1714744038
+Content-Type: application/json
+
+{
+    "username":"harini",
+    "comment":"good work!"
+}
+
+### columist can add picture
+POST http://localhost:3000/columnist-api/add-picture
+Content-Type: application/json
+
+{
+   "articleId": "1714744038",
+   "pictures": [
+       {
+           "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQEDm3YxnStLWjdJtD4VGY_JSoiuyOZXoW4Mw&usqp=CAU",
+           "caption": "Beautiful scenery"
+       },
+       {
+           "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRWVwhJzoZVB_7dYnVsG7v2w3wZUJVb5WzSsA&usqp=CAU",
+           "caption": "Interesting art work"
+       }
+   ]
+}
